@@ -1,7 +1,43 @@
+import React, { Component } from 'react'
+import styled, { css } from 'styled-components'
 import logo from './logo.svg'
 import './App.css'
-import styled from 'styled-components'
 
+const size = {
+  small: 400,
+  med: 960,
+  large: 1140
+}
+
+// Above media queries (pixels)
+// const above = Object.keys(size).reduce((acc, label) => {
+//   acc[label] = (...args) => css`
+//     @media (min-width: ${size[label]}px) {
+//       ${css(...args)}
+//     }
+//   `;
+//   return acc;
+// }, {});
+
+// Above media queries (rem)
+const above = Object.keys(size).reduce((acc, label) => {
+  acc[label] = (...args) => css`
+    @media (min-width: ${size[label] / 16}rem) {
+      ${css(...args)}
+    }
+  `
+  return acc
+}, {})
+
+// Below media queries (rem)
+const below = Object.keys(size).reduce((acc, label) => {
+  acc[label] = (...args) => css`
+    @media (max-width: ${size[label] / 16}rem) {
+      ${css(...args)}
+    }
+  `
+  return acc
+}, {})
 
 // We must pass className as a prop in order for the Fake component to be aware that CSS is coming in.
 const Fake = ({ className }) => (
@@ -12,20 +48,22 @@ const Fake = ({ className }) => (
 
 const Heading = styled.h1`
   font-size: 2rem;
+  ${above.med`
+    color: blue;
+  `}
 `
 
 const color = 'white'
 
 const Button = styled.button`
-  padding: 5px 10px;
+  padding: 5px 20px;
   border-radius: 4px;
-  border: none;
   color: ${color};
   font-size: 2rem;
+  border: none;
   background: indigo;
-  
 `
-// styled(component) inherits everything from the component in brackets
+
 const CancelButton = styled(Button)`
   background: tomato;
 `
@@ -37,33 +75,8 @@ const AppWrapper = styled.div`
       background: #282c34;
     }
   }
-  
-  ${'' /* Other components can be referenced using interpolation */}
   ${Button} {
     margin-bottom: 2rem;
-  }
-
-  .App-logo {
-    height: 40vmin;
-    pointer-events: none;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
-  }
-
-  a {
-    color: #61dafb;
-  }
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
   }
 `
 
@@ -81,11 +94,13 @@ function App () {
         <Heading>
           Edit <code>src/App.js</code> and save to reload.
         </Heading>
-        <StyledFake/>
-        <Fake/>
+        <StyledFake />
+        <Fake />
         <Button>Save</Button>
         <CancelButton>Cancel</CancelButton>
+        <Heading>Heading two</Heading>
         <a
+          className='App-link'
           href='https://reactjs.org'
           target='_blank'
           rel='noopener noreferrer'
