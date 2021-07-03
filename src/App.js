@@ -14,9 +14,14 @@ const Button = styled.button`
   border: none;
   color: ${color};
   font-size: 2rem;
-  background: ${({ type }) => (type === 'cancel' ? 'tomato' : 'indigo')};
+  background: indigo;
   
 `
+// styled(component) inherits everything from the component in brackets
+const CancelButton = styled(Button)`
+  background: tomato;
+`
+
 const AppWrapper = styled.div`
   header {
     background: teal;
@@ -39,7 +44,6 @@ const AppWrapper = styled.div`
   a {
     color: #61dafb;
   }
-
   @keyframes App-logo-spin {
     from {
       transform: rotate(0deg);
@@ -58,8 +62,8 @@ function App () {
         <Heading>
           Edit <code>src/App.js</code> and save to reload.
         </Heading>
-        <Button type='cancel'>Cancel</Button>
-        <Button type='save'>Save</Button>
+        <Button>Save</Button>
+        <CancelButton>Cancel</CancelButton>
         <a
           href='https://reactjs.org'
           target='_blank'
