@@ -46,6 +46,20 @@ const Fake = ({ className }) => (
   </div>
 )
 
+// CSS Helper (useful for mixins)
+// The css function is not necessary if we're using just a string. But it do is necessary when using props or functions in mixins.
+const fixedTop = css`
+  position: fixed;
+  top: ${ ({top}) => top + 'px'};
+  left: 0;
+`
+
+// const fixedTop = `
+//   position: fixed;
+//   top: ${({top}) => top} px;
+//   left: 0;
+// `
+
 const Heading = styled.h1`
   font-size: 2rem;
   ${above.med`
@@ -66,6 +80,7 @@ const Button = styled.button`
 
 const CancelButton = styled(Button)`
   background: tomato;
+  ${fixedTop};
 `
 
 const AppWrapper = styled.div`
@@ -97,7 +112,7 @@ function App () {
         <StyledFake />
         <Fake />
         <Button>Save</Button>
-        <CancelButton>Cancel</CancelButton>
+        <CancelButton top='100'>Cancel</CancelButton>
         <Heading>Heading two</Heading>
         <a
           className='App-link'
