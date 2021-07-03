@@ -2,6 +2,14 @@ import logo from './logo.svg'
 import './App.css'
 import styled from 'styled-components'
 
+
+// We must pass className as a prop in order for the Fake component to be aware that CSS is coming in.
+const Fake = ({ className }) => (
+  <div className={className}>
+    <h2>I'm a fake component</h2>
+  </div>
+)
+
 const Heading = styled.h1`
   font-size: 2rem;
 `
@@ -29,6 +37,11 @@ const AppWrapper = styled.div`
       background: #282c34;
     }
   }
+  
+  ${'' /* Other components can be referenced using interpolation */}
+  ${Button} {
+    margin-bottom: 2rem;
+  }
 
   .App-logo {
     height: 40vmin;
@@ -54,6 +67,12 @@ const AppWrapper = styled.div`
   }
 `
 
+const StyledFake = styled(Fake)`
+  h2 {
+    color: red;
+  }
+`
+
 function App () {
   return (
     <AppWrapper>
@@ -62,6 +81,8 @@ function App () {
         <Heading>
           Edit <code>src/App.js</code> and save to reload.
         </Heading>
+        <StyledFake/>
+        <Fake/>
         <Button>Save</Button>
         <CancelButton>Cancel</CancelButton>
         <a
