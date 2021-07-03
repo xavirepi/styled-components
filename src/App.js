@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 import logo from './logo.svg'
-import './App.css'
+import GlobalStyle from './Global';
 
 const size = {
   small: 400,
@@ -104,25 +104,26 @@ const StyledFake = styled(Fake)`
 function App () {
   return (
     <AppWrapper>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <Heading>
-          Edit <code>src/App.js</code> and save to reload.
-        </Heading>
-        <StyledFake />
-        <Fake />
-        <Button>Save</Button>
-        <CancelButton top='100'>Cancel</CancelButton>
-        <Heading>Heading two</Heading>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
+        <header className='App-header'>
+          <img src={logo} className='App-logo' alt='logo' />
+          <Heading>
+            Edit <code>src/App.js</code> and save to reload.
+          </Heading>
+          <StyledFake />
+          <Fake />
+          <Button>Save</Button>
+          <CancelButton top='100'>Cancel</CancelButton>
+          <Heading>Heading two</Heading>
+          <a
+            className='App-link'
+            href='https://reactjs.org'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Learn React
+          </a>
+        </header>
+      <GlobalStyle/>
     </AppWrapper>
   )
 }
