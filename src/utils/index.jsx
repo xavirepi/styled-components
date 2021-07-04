@@ -4,5 +4,6 @@ import elevation from './Elevation';
 export * from './Breakpoints';
 export * from './Position';
 export * from './Colors';
+export * from './Fonts';
 
 export { elevation }; // It must be done this way as it is exported by default without a name.

@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import logo from '../logo.svg'
-import { social, elevation, fixed } from '../utils'
+import { social, elevation, fixed, serif } from '../utils'
 
 const Header = ({ className }) => {
   return (
     <header className={className}>
       <img src={logo} alt='logo' className='logo' />
+      Hello
     </header>
   )
 }
@@ -17,8 +18,11 @@ const Header = ({ className }) => {
 export default styled(Header)`
   background: ${social.facebook};
   padding: 10px 5%;
+  width: 100%;
+  ${serif};
   ${'' /* ${fixed({})}; If empty object is passed, the fixed function default values are used */}
-  ${fixed({ y: '40px'})};
+  ${'' /* ${fixed({ yProp: 'bottom'})}; Example using yProp */}
+  ${fixed()};
   ${elevation[2]};
   .logo {
     width: 60px;
