@@ -8,7 +8,7 @@ const BUTTON_MODIFIERS = {
     padding: 3px 10px;
   `,
   cancel: ({theme}) => `
-    background: ${theme.colors.secondary};
+    background: ${theme.colors.primary};
   `
 }
 
