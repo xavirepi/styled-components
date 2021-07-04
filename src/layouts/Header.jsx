@@ -7,7 +7,6 @@ const Header = ({ className }) => {
   return (
     <header className={className}>
       <img src={logo} alt='logo' className='logo' />
-      Hello
     </header>
   )
 }

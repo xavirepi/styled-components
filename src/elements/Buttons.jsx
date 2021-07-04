@@ -1,18 +1,38 @@
 import styled from "styled-components";
-import { fixedTop } from '../utils';
+import { teal, elevation } from '../utils';
 
-const color = 'white'
-
+// We can choose either to have a less components with more props or have more components to export them.
+// It all depends on the styling strategy choosed. 
 export const Button = styled.button`
   padding: 5px 20px;
   border-radius: 4px;
-  color: ${color};
+  color: white;
   font-size: 2rem;
   border: none;
-  background: indigo;
-`
+  transition: 0.3s ease box-shadow;
+  background: ${teal};
+  ${elevation[1]};
+  &:hover {
+    ${elevation[2]};
+  }
+  ${({size}) => {
+    if (size === 'small') {
+      return `
+        font-size: 1rem;
+        padding: 3px 10px;
+      `
+    }
+  }};
+  ${({type}) => {
+    if (type === 'cancel') {
+      return `
+        background: tomato
+      `
+    }
+  }};
+`;
 
+// The button style is extended
 export const CancelButton = styled(Button)`
   background: tomato;
-  ${fixedTop};
-`
+`;
