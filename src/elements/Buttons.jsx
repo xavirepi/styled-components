@@ -7,8 +7,8 @@ const BUTTON_MODIFIERS = {
     font-size: 1rem;
     padding: 3px 10px;
   `,
-  cancel: () => `
-    background: tomato;
+  cancel: ({theme}) => `
+    background: ${theme.colors.secondary};
   `
 }
 
