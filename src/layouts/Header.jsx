@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import logo from '../logo.svg';
-import { purple, social, elevation } from '../utils';
+import React from 'react'
+import styled from 'styled-components'
+import logo from '../logo.svg'
+import { social, elevation, fixed } from '../utils'
 
 const Header = ({ className }) => {
   return (
@@ -9,7 +9,7 @@ const Header = ({ className }) => {
       <img src={logo} alt='logo' className='logo' />
     </header>
   )
-};
+}
 
 // It could be modularized into an external directory but it'd only make sense if this component would be used somewhere else.
 // As it's not the case it is styled here in the same file.
@@ -17,8 +17,10 @@ const Header = ({ className }) => {
 export default styled(Header)`
   background: ${social.facebook};
   padding: 10px 5%;
+  ${'' /* ${fixed({})}; If empty object is passed, the fixed function default values are used */}
+  ${fixed({ y: '40px'})};
   ${elevation[2]};
   .logo {
     width: 60px;
   }
-`;
+`

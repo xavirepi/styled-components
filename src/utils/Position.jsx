@@ -1,9 +1,17 @@
-import { css } from "styled-components"
+import { css } from 'styled-components'
 
-// CSS Helper (useful for mixins)
-// The css function is not necessary if we're using just a string. But it do is necessary when using props or functions in mixins.
-export const fixedTop = css`
-  position: fixed;
-  top: ${({ top }) => top + 'px'};
-  left: 0;
-`
+// We can create a mixin to position elements dinamically using this function.
+export const fixed = ( { x = 0, y = 0 } = {} ) => (// We give a default value of 0, 0 and then an empty object is specified whenever the function fixed is called.
+  // And the default value of x and y is going to be an empty object
+  css`
+    position: fixed;
+    top: ${y};
+    left: ${x};
+  `
+);
+
+export const absolute = ({ x = 0, y = 0 } = {}) => css`
+    position: absolute;
+    top: ${y};
+    left: ${x};
+  `;
