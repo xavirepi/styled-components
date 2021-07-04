@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { lighten } from "polished";
 import { teal, elevation } from '../utils';
 
 // We can choose either to have a less components with more props or have more components to export them.
@@ -9,10 +10,11 @@ export const Button = styled.button`
   color: white;
   font-size: 2rem;
   border: none;
-  transition: 0.3s ease box-shadow;
+  transition: 0.3s ease box-shadow background;
   background: ${teal};
   ${elevation[1]};
   &:hover {
+    background: ${lighten(0.2, teal)};
     ${elevation[2]};
   }
   ${({size}) => {
@@ -35,4 +37,7 @@ export const Button = styled.button`
 // The button style is extended
 export const CancelButton = styled(Button)`
   background: tomato;
+  &:hover {
+    background: ${lighten(0.2, 'tomato')};
+  }
 `;
