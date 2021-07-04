@@ -27,7 +27,7 @@ function App () {
         <GlobalStyle />
         <main
           css={`
-            background: red;
+            background: teal;
 
             h2 {
               font-size: 100px;
@@ -38,7 +38,8 @@ function App () {
           <ThemeProvider theme={themeTwo}>
             <Card>
               <h2>Card Heading</h2>
-              <Card.Button>Say Hello</Card.Button>
+              <Card.Button as="a">Say Hello</Card.Button>
+              {/* as is usefult to, for example, turn buttons into links */}
               <Card.Button modifiers='cancel'>Don't Say Hello</Card.Button>
             </Card>
           </ThemeProvider>
