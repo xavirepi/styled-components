@@ -1,9 +1,19 @@
-import styled from "styled-components";
-import { lighten } from "polished";
-import { teal, elevation } from '../utils';
+import styled from 'styled-components'
+import { applyStyleModifiers } from 'styled-components-modifiers'
+import { teal, elevation } from '../utils'
+
+const BUTTON_MODIFIERS = {
+  small: () => `  
+    font-size: 1rem;
+    padding: 3px 10px;
+  `,
+  cancel: () => `
+    background: tomato;
+  `
+}
 
 // We can choose either to have a less components with more props or have more components to export them.
-// It all depends on the styling strategy choosed. 
+// It all depends on the styling strategy choosed.
 export const Button = styled.button`
   padding: 5px 20px;
   border-radius: 4px;
@@ -14,30 +24,14 @@ export const Button = styled.button`
   background: ${teal};
   ${elevation[1]};
   &:hover {
-    background: ${lighten(0.2, teal)};
     ${elevation[2]};
   }
-  ${({size}) => {
-    if (size === 'small') {
-      return `
-        font-size: 1rem;
-        padding: 3px 10px;
-      `
-    }
-  }};
-  ${({type}) => {
-    if (type === 'cancel') {
-      return `
-        background: tomato
-      `
-    }
-  }};
-`;
+
+  ${applyStyleModifiers(BUTTON_MODIFIERS)}; 
+`
+// applyStyleModifiers function must be called at the bottom of the CSS for the properties to be overwritten.
 
 // The button style is extended
 export const CancelButton = styled(Button)`
   background: tomato;
-  &:hover {
-    background: ${lighten(0.2, 'tomato')};
-  }
-`;
+`
